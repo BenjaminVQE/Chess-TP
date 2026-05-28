@@ -61,7 +61,32 @@ class Game
             throw new InvalidMoveException("Le mouvement est invalide.");
         }
 
+        $isCastling = $piece->getType() === PieceType::KING && abs($from->getColumn() - $to->getColumn()) === 2;
+
         $this->board->movePiece($from, $to);
+        $piece->setMoved();
+
+        if ($isCastling) {
+            $rookFromCol = $to->getColumn() > $from->getColumn() ? 7 : 0;
+            $rookToCol = $to->getColumn() > $from->getColumn() ? $to->getColumn() - 1 : $to->getColumn() + 1;
+            $rookFrom = new Position($from->getRow(), $rookFromCol);
+            $rookTo = new Position($from->getRow(), $rookToCol);
+            
+            $rook = $this->board->getPieceAt($rookFrom);
+            if ($rook !== null) {
+                $this->board->movePiece($rookFrom, $rookTo);
+                $rook->setMoved();
+            }
+        }
+
+        if ($piece->getType() === PieceType::PAWN) {
+            $promotionRow = $piece->getColor() === PieceColor::WHITE ? 0 : 7;
+            if ($to->getRow() === $promotionRow) {
+                $this->board->removePieceAt($to);
+                $queen = $this->pieceFactory->create(PieceType::QUEEN, $piece->getColor(), $to);
+                $this->board->placePiece($queen);
+            }
+        }
 
         $this->switchPlayer();
     }

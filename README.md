@@ -99,15 +99,15 @@ Voici le récapitulatif des tâches effectuées (✓) et restantes (✗) pour ce
 | `WrongTurnException` | (Exception) | ✓ |
 | `OccupiedByAllyException`| (Exception) | ✓ |
 | **Bonus** | | |
-| Roque | | ✗ |
-| Promotion du pion | | ✗ |
+| Roque | | ✓ |
+| Promotion du pion | | ✓ |
 | Prise en passant | | ✗ |
 | Interdiction de mettre son propre roi en échec | | ✗ |
 | Échec et mat | | ✗ |
 | Pat | | ✗ |
 | Historique complet des coups | | ✗ |
 | Tests automatisés | | ✗ |
-| Autre bonus : `à préciser` | | ✗ |
+| Autre bonus : `Jeu interactif` | | ✓ |
 
 ---
 

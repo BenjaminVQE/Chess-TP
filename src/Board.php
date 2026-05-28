@@ -78,11 +78,10 @@ class Board implements Renderable
 
     public function render(): string
     {
-        // Couleurs ANSI pour un plateau (Style Chess.com)
-        $bgLight = "\033[47m"; // Case claire (Blanc)
-        $bgDark  = "\033[42m"; // Case sombre (Vert)
-        $fgWhite = "\033[97m\033[1m"; // Pièce blanche (Blanc brillant)
-        $fgBlack = "\033[30m\033[1m"; // Pièce noire (Noir)
+        $bgLight = "\033[47m";
+        $bgDark  = "\033[42m";
+        $fgWhite = "\033[97m\033[1m";
+        $fgBlack = "\033[30m\033[1m";
         $reset   = "\033[0m";
 
         $output = "    a  b  c  d  e  f  g  h\n";
