@@ -78,20 +78,22 @@ class Board implements Renderable
 
     public function render(): string
     {
-        $output = "  a b c d e f g h\n";
+        $output = "    a   b   c   d   e   f   g   h\n";
+        $output .= "  +---+---+---+---+---+---+---+---+\n";
         for ($row = 0; $row < 8; $row++) {
-            $output .= (8 - $row) . " ";
+            $output .= (8 - $row) . " |";
             for ($col = 0; $col < 8; $col++) {
                 $pos = new Position($row, $col);
                 if ($this->hasPieceAt($pos)) {
-                    $output .= $this->getPieceAt($pos)->render() . " ";
+                    $output .= " " . $this->getPieceAt($pos)->render() . " |";
                 } else {
-                    $output .= ". ";
+                    $output .= "   |";
                 }
             }
-            $output .= (8 - $row) . "\n";
+            $output .= " " . (8 - $row) . "\n";
+            $output .= "  +---+---+---+---+---+---+---+---+\n";
         }
-        $output .= "  a b c d e f g h\n";
+        $output .= "    a   b   c   d   e   f   g   h\n";
         return $output;
     }
 }
