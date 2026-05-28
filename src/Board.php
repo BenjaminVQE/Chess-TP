@@ -78,22 +78,32 @@ class Board implements Renderable
 
     public function render(): string
     {
-        $output = "    a   b   c   d   e   f   g   h\n";
-        $output .= "  +---+---+---+---+---+---+---+---+\n";
+        // Couleurs ANSI pour un magnifique plateau (Style Chess.com)
+        $bgLight = "\033[47m"; // Case claire (Blanc)
+        $bgDark  = "\033[42m"; // Case sombre (Vert)
+        $fgWhite = "\033[97m\033[1m"; // Pièce blanche (Blanc brillant)
+        $fgBlack = "\033[30m\033[1m"; // Pièce noire (Noir)
+        $reset   = "\033[0m";
+
+        $output = "    a  b  c  d  e  f  g  h\n";
         for ($row = 0; $row < 8; $row++) {
-            $output .= (8 - $row) . " |";
+            $output .= (8 - $row) . " ";
             for ($col = 0; $col < 8; $col++) {
+                $isLightSquare = ($row + $col) % 2 === 0;
+                $bgColor = $isLightSquare ? $bgLight : $bgDark;
+                
                 $pos = new Position($row, $col);
                 if ($this->hasPieceAt($pos)) {
-                    $output .= " " . $this->getPieceAt($pos)->render() . " |";
+                    $piece = $this->getPieceAt($pos);
+                    $textColor = $piece->getColor() === PieceColor::WHITE ? $fgWhite : $fgBlack;
+                    $output .= $bgColor . $textColor . " " . $piece->render() . " " . $reset;
                 } else {
-                    $output .= "   |";
+                    $output .= $bgColor . "   " . $reset;
                 }
             }
             $output .= " " . (8 - $row) . "\n";
-            $output .= "  +---+---+---+---+---+---+---+---+\n";
         }
-        $output .= "    a   b   c   d   e   f   g   h\n";
+        $output .= "    a  b  c  d  e  f  g  h\n";
         return $output;
     }
 }
