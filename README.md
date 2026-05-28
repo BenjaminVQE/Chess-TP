@@ -13,6 +13,50 @@ Le but n'est pas de "faire à sa manière", mais de :
 
 Le sujet est donc volontairement directif.
 
+---
+
+# État d'avancement du projet
+
+Voici le tableau récapitulatif des tâches effectuées (✓) et restantes (✗) pour ce TP :
+
+| Phase / Composant | Fichier | Statut |
+|-------------------|---------|:------:|
+| **Phase 1 - Socle** | | |
+| Classe `Position` | [src/Position.php](file:///var/www/MDS/chess-tp/src/Position.php) | ✓ |
+| Enum `PieceColor` | [src/Enum/PieceColor.php](file:///var/www/MDS/chess-tp/src/Enum/PieceColor.php) | ✓ |
+| Enum `PieceType` | [src/Enum/PieceType.php](file:///var/www/MDS/chess-tp/src/Enum/PieceType.php) | ✓ |
+| Interface `Renderable` | [src/Contract/Renderable.php](file:///var/www/MDS/chess-tp/src/Contract/Renderable.php) | ✓ |
+| **Phase 2 - Hiérarchie des pièces** | | |
+| Classe abstraite `Piece` | [src/Piece/Piece.php](file:///var/www/MDS/chess-tp/src/Piece/Piece.php) | ✓ |
+| Classe `King` | [src/Piece/King.php](file:///var/www/MDS/chess-tp/src/Piece/King.php) | ✓ |
+| Classe `Queen` | [src/Piece/Queen.php](file:///var/www/MDS/chess-tp/src/Piece/Queen.php) | ✓ |
+| Classe `Rook` | [src/Piece/Rook.php](file:///var/www/MDS/chess-tp/src/Piece/Rook.php) | ✓ |
+| Classe `Bishop` | [src/Piece/Bishop.php](file:///var/www/MDS/chess-tp/src/Piece/Bishop.php) | ✓ |
+| Classe `Knight` | [src/Piece/Knight.php](file:///var/www/MDS/chess-tp/src/Piece/Knight.php) | ✓ |
+| Classe `Pawn` | [src/Piece/Pawn.php](file:///var/www/MDS/chess-tp/src/Piece/Pawn.php) | ✓ |
+| **Phase 3 - Intention de coup** | | |
+| Classe `Move` | [src/Move.php](file:///var/www/MDS/chess-tp/src/Move.php) | ✓ |
+| **Phase 4 - Plateau** | | |
+| Classe `Board` | [src/Board.php](file:///var/www/MDS/chess-tp/src/Board.php) | ✓ |
+| **Phase 5 - Exceptions** | | |
+| `ChessException` | [src/Exception/ChessException.php](file:///var/www/MDS/chess-tp/src/Exception/ChessException.php) | ✓ |
+| `InvalidMoveException`| [src/Exception/InvalidMoveException.php](file:///var/www/MDS/chess-tp/src/Exception/InvalidMoveException.php)| ✓ |
+| `NoPieceException` | [src/Exception/NoPieceException.php](file:///var/www/MDS/chess-tp/src/Exception/NoPieceException.php) | ✓ |
+| `WrongTurnException` | [src/Exception/WrongTurnException.php](file:///var/www/MDS/chess-tp/src/Exception/WrongTurnException.php) | ✓ |
+| `OccupiedByAlly...` | [src/Exception/OccupiedByAllyException.php](file:///var/www/MDS/chess-tp/src/Exception/OccupiedByAllyException.php) | ✓ |
+| **Phase 6 - Factory** | | |
+| Classe `PieceFactory` | [src/Factory/PieceFactory.php](file:///var/www/MDS/chess-tp/src/Factory/PieceFactory.php) | ✓ |
+| **Phase 7 - Partie (Game)** | | |
+| Classe `Game` | [src/Game.php](file:///var/www/MDS/chess-tp/src/Game.php) | ✓ |
+| Placement initial | [src/Game.php](file:///var/www/MDS/chess-tp/src/Game.php) | ✓ |
+| Méthode `isCheck()` | [src/Game.php](file:///var/www/MDS/chess-tp/src/Game.php) | ✓ |
+| **Fichier Principal** | | |
+| Script `index.php` | [index.php](file:///var/www/MDS/chess-tp/index.php) | ✓ |
+
+*Toutes les étapes du TP ont été réalisées avec succès, respectant la structure et les design patterns demandés !*
+
+---
+
 ## Objectif pédagogique
 Vous devez construire un mini moteur métier d'échecs en PHP pour travailler :
 - l'encapsulation ;
@@ -241,44 +285,3 @@ Classe `Game` (`src/Game.php`) qui gère la logique principale, les tours et la 
 ## Ce qui sera évalué
 L'évaluation portera sur le respect strict de l'architecture, la qualité du polymorphisme, la gestion correcte des règles de base et la propreté du code.
 
----
-
-# État d'avancement du projet
-
-Voici le tableau récapitulatif des tâches effectuées (✓) et restantes (✗) pour ce TP :
-
-| Phase / Composant | Fichier | Statut |
-|-------------------|---------|:------:|
-| **Phase 1 - Socle** | | |
-| Classe `Position` | [src/Position.php](./src/Position.php) | ✓ |
-| Enum `PieceColor` | [src/Enum/PieceColor.php](./src/Enum/PieceColor.php) | ✓ |
-| Enum `PieceType` | [src/Enum/PieceType.php](./src/Enum/PieceType.php) | ✓ |
-| Interface `Renderable` | [src/Contract/Renderable.php](./src/Contract/Renderable.php) | ✓ |
-| **Phase 2 - Hiérarchie des pièces** | | |
-| Classe abstraite `Piece` | [src/Piece/Piece.php](./src/Piece/Piece.php) | ✓ |
-| Classe `King` | [src/Piece/King.php](./src/Piece/King.php) | ✓ |
-| Classe `Queen` | [src/Piece/Queen.php](./src/Piece/Queen.php) | ✓ |
-| Classe `Rook` | [src/Piece/Rook.php](./src/Piece/Rook.php) | ✓ |
-| Classe `Bishop` | [src/Piece/Bishop.php](./src/Piece/Bishop.php) | ✓ |
-| Classe `Knight` | [src/Piece/Knight.php](./src/Piece/Knight.php) | ✓ |
-| Classe `Pawn` | [src/Piece/Pawn.php](./src/Piece/Pawn.php) | ✓ |
-| **Phase 3 - Intention de coup** | | |
-| Classe `Move` | [src/Move.php](./src/Move.php) | ✓ |
-| **Phase 4 - Plateau** | | |
-| Classe `Board` | [src/Board.php](./src/Board.php) | ✓ |
-| **Phase 5 - Exceptions** | | |
-| `ChessException` | [src/Exception/ChessException.php](./src/Exception/ChessException.php) | ✓ |
-| `InvalidMoveException`| [src/Exception/InvalidMoveException.php](./src/Exception/InvalidMoveException.php)| ✓ |
-| `NoPieceException` | [src/Exception/NoPieceException.php](./src/Exception/NoPieceException.php) | ✓ |
-| `WrongTurnException` | [src/Exception/WrongTurnException.php](./src/Exception/WrongTurnException.php) | ✓ |
-| `OccupiedByAlly...` | [src/Exception/OccupiedByAllyException.php](./src/Exception/OccupiedByAllyException.php) | ✓ |
-| **Phase 6 - Factory** | | |
-| Classe `PieceFactory` | [src/Factory/PieceFactory.php](./src/Factory/PieceFactory.php) | ✓ |
-| **Phase 7 - Partie (Game)** | | |
-| Classe `Game` | [src/Game.php](./src/Game.php) | ✓ |
-| Placement initial | [src/Game.php](./src/Game.php) | ✓ |
-| Méthode `isCheck()` | [src/Game.php](./src/Game.php) | ✓ |
-| **Fichier Principal** | | |
-| Script `index.php` | [index.php](./index.php) | ✓ |
-
-*Toutes les étapes du TP ont été réalisées avec succès, respectant la structure et les design patterns demandés !*
