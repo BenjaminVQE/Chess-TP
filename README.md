@@ -17,43 +17,97 @@ Le sujet est donc volontairement directif.
 
 # État d'avancement du projet
 
-Voici le tableau récapitulatif des tâches effectuées (✓) et restantes (✗) pour ce TP :
+Voici le récapitulatif des tâches effectuées (✓) et restantes (✗) pour ce TP :
 
-| Phase / Composant | Fichier | Statut |
-|-------------------|---------|:------:|
-| **Phase 1 - Socle** | | |
-| Classe `Position` | [src/Position.php](./src/Position.php) | ✓ |
-| Enum `PieceColor` | [src/Enum/PieceColor.php](./src/Enum/PieceColor.php) | ✓ |
-| Enum `PieceType` | [src/Enum/PieceType.php](./src/Enum/PieceType.php) | ✓ |
-| Interface `Renderable` | [src/Contract/Renderable.php](./src/Contract/Renderable.php) | ✓ |
-| **Phase 2 - Hiérarchie des pièces** | | |
-| Classe abstraite `Piece` | [src/Piece/Piece.php](./src/Piece/Piece.php) | ✓ |
-| Classe `King` | [src/Piece/King.php](./src/Piece/King.php) | ✓ |
-| Classe `Queen` | [src/Piece/Queen.php](./src/Piece/Queen.php) | ✓ |
-| Classe `Rook` | [src/Piece/Rook.php](./src/Piece/Rook.php) | ✓ |
-| Classe `Bishop` | [src/Piece/Bishop.php](./src/Piece/Bishop.php) | ✓ |
-| Classe `Knight` | [src/Piece/Knight.php](./src/Piece/Knight.php) | ✓ |
-| Classe `Pawn` | [src/Piece/Pawn.php](./src/Piece/Pawn.php) | ✓ |
-| **Phase 3 - Intention de coup** | | |
-| Classe `Move` | [src/Move.php](./src/Move.php) | ✓ |
-| **Phase 4 - Plateau** | | |
-| Classe `Board` | [src/Board.php](./src/Board.php) | ✓ |
-| **Phase 5 - Exceptions** | | |
-| `ChessException` | [src/Exception/ChessException.php](./src/Exception/ChessException.php) | ✓ |
-| `InvalidMoveException`| [src/Exception/InvalidMoveException.php](./src/Exception/InvalidMoveException.php)| ✓ |
-| `NoPieceException` | [src/Exception/NoPieceException.php](./src/Exception/NoPieceException.php) | ✓ |
-| `WrongTurnException` | [src/Exception/WrongTurnException.php](./src/Exception/WrongTurnException.php) | ✓ |
-| `OccupiedByAlly...` | [src/Exception/OccupiedByAllyException.php](./src/Exception/OccupiedByAllyException.php) | ✓ |
-| **Phase 6 - Factory** | | |
-| Classe `PieceFactory` | [src/Factory/PieceFactory.php](./src/Factory/PieceFactory.php) | ✓ |
-| **Phase 7 - Partie (Game)** | | |
-| Classe `Game` | [src/Game.php](./src/Game.php) | ✓ |
-| Placement initial | [src/Game.php](./src/Game.php) | ✓ |
-| Méthode `isCheck()` | [src/Game.php](./src/Game.php) | ✓ |
-| **Fichier Principal** | | |
-| Script `index.php` | [index.php](./index.php) | ✓ |
-
-*Toutes les étapes du TP ont été réalisées avec succès, respectant la structure et les design patterns demandés !*
+| Catégorie / Composant | Élément (Méthode / Propriété) | Statut |
+|---|---|:---:|
+| **Classes principales** | | |
+| `Position` | (Classe) | ✓ |
+| | `__construct()` | ✓ |
+| | `getRow()` | ✓ |
+| | `getColumn()` | ✓ |
+| | `equals()` | ✓ |
+| | `toKey()` | ✓ |
+| | `fromKey()` | ✓ |
+| `Move` | (Classe) | ✓ |
+| | `__construct()` | ✓ |
+| | `getFrom()` | ✓ |
+| | `getTo()` | ✓ |
+| `Board` | (Classe) | ✓ |
+| | `placePiece()` | ✓ |
+| | `getPieceAt()` | ✓ |
+| | `hasPieceAt()` | ✓ |
+| | `removePieceAt()` | ✓ |
+| | `movePiece()` | ✓ |
+| | `isPathClear()` | ✓ |
+| | `getPieces()` | ✓ |
+| | `getKingPosition()` | ✓ |
+| | `render()` | ✓ |
+| `Game` | (Classe) | ✓ |
+| | `__construct()` | ✓ |
+| | `start()` | ✓ |
+| | `getBoard()` | ✓ |
+| | `getCurrentPlayer()` | ✓ |
+| | `play()` | ✓ |
+| | `isCheck()` | ✓ |
+| | `setupPieces()` | ✓ |
+| | `switchPlayer()` | ✓ |
+| **Pièces** | | |
+| `Piece` | (Classe abstraite) | ✓ |
+| | `__construct()` | ✓ |
+| | `getColor()` | ✓ |
+| | `getPosition()` | ✓ |
+| | `setPosition()` | ✓ |
+| | `getType()` | ✓ |
+| | `render()` | ✓ |
+| | `canMove()` | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| | `canCapture()` | ✓ |
+| `King` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| `Queen` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| `Rook` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| `Bishop` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| `Knight` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| `Pawn` | (Classe) | ✓ |
+| | `isValidMovementShape()` | ✓ |
+| **Factory** | | |
+| `PieceFactory` | (Classe) | ✓ |
+| | `create()` | ✓ |
+| **Interface / Enums** | | |
+| `Renderable` | (Interface) | ✓ |
+| | `render()` | ✓ |
+| `PieceColor` | (Enum) | ✓ |
+| | `WHITE` | ✓ |
+| | `BLACK` | ✓ |
+| | `opposite()` | ✓ |
+| `PieceType` | (Enum) | ✓ |
+| | `KING` | ✓ |
+| | `QUEEN` | ✓ |
+| | `ROOK` | ✓ |
+| | `BISHOP` | ✓ |
+| | `KNIGHT` | ✓ |
+| | `PAWN` | ✓ |
+| **Exceptions** | | |
+| `ChessException` | (Exception) | ✓ |
+| `InvalidMoveException` | (Exception) | ✓ |
+| `NoPieceException` | (Exception) | ✓ |
+| `WrongTurnException` | (Exception) | ✓ |
+| `OccupiedByAllyException`| (Exception) | ✓ |
+| **Bonus** | | |
+| Roque | | ✗ |
+| Promotion du pion | | ✗ |
+| Prise en passant | | ✗ |
+| Interdiction de mettre son propre roi en échec | | ✗ |
+| Échec et mat | | ✗ |
+| Pat | | ✗ |
+| Historique complet des coups | | ✗ |
+| Tests automatisés | | ✗ |
+| Autre bonus : `à préciser` | | ✗ |
 
 ---
 
